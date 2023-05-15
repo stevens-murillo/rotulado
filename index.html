@@ -28,8 +28,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 
   <!-- font-awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script> -->
 
   <script type='text/javascript' src='js/index.js'> </script>
@@ -40,10 +39,10 @@
 <body>
 
   <div class="container">
-    <div class="row h-100 align-items-center justify-content-center" style="border: 0px solid rgb(0, 132, 255);">
+    <div class="row" style="border: 0px solid rgb(0, 132, 255);">
 
-      <div class="col-md-12 col-sm-12 col-xs-12 p-2 " style="border: 0px solid green;">
-        <h5>Datos:</h5>
+      <div class="col-md-12 col-sm-12 col-xs-12 p-2 " id="formData" style="border: 0px solid green;">
+        <h5>Datos de envio:</h5>
         <div class="form-group">
           <label for="exampleFormControlFile1">Nombre:</label>
           <input id="formNom" class="form-control form-control-sm" type="text" placeholder="Nombre">
@@ -64,48 +63,52 @@
           <label for="exampleFormControlFile1">Ciudad: </label>
           <input id="formCiu" class="form-control form-control-sm" type="text" placeholder="Ciudad">
         </div>
-      </div>
-
       <hr>
-        <button type="submit" class="btn btn-primary" onclick="imprimir()">Enviar</button>
-      <div class="col-md-6 col-sm-6 col-xs-6 p-2 " style="border: 0px solid red; ">
-        <h5>Envía:</h5>
-        <strong>Cedula:</strong> 1005829833</br>
-        <strong>Nombre:</strong> Lissie Alejandra Valencia</br>
-        <strong>Dirección:</strong> Avenida 32 oeste #11 a 10</br>
-        <strong>Celular:</strong> 301 5687338</br>
-        <strong>Ciudad:</strong> Cali, valle</br>
-
-      </div>
-      <div class="col-md-6 col-sm-6 col-xs-6 p-2 " style="border: 0px solid red; ">
-        <h5>Recibe:</h5>
-        <div id="nombre"><strong>Nombre:</strong></div>
-        <div id="celular"><strong>Celular:</strong></div>
-        <div id="direccion"><strong>Dirección:</strong></div>
-        <div id="barrio"><strong>Barrio:</strong></div>
-        <div id="ciudad"><strong>Ciudad:</strong></div>
-
-
-
-
-      </div>
-    
-
+      <button type="submit" class="btn btn-primary" onclick="cargar()">Enviar</button>
     </div>
 
-
+      <hr id="Underline">
+      <h5 id="tituloRotulo">Previsualización del rotulo</h5>
+        <div class="col-md-6 col-sm-6 col-xs-6 p-2 " id="datEnvia" style="border: 1px solid rgb(145, 129, 129); ">
+          <h5>Envía:</h5>
+          <strong>Cedula:</strong> 1005829833</br>
+          <strong>Nombre:</strong> Lissie Alejandra Valencia</br>
+          <strong>Dirección:</strong> Avenida 32 oeste #11 a 10</br>
+          <strong>Celular:</strong> 301 5687338</br>
+          <strong>Ciudad:</strong> Cali, valle</br>
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-6 p-2 " id="datRecibe" style="border: 1px solid rgb(145, 129, 129); ">
+          <h5>Recibe:</h5>
+          <div id="nombre"><strong>Nombre:</strong></div>
+          <div id="celular"><strong>Celular:</strong></div>
+          <div id="direccion"><strong>Dirección:</strong></div>
+          <div id="barrio"><strong>Barrio:</strong></div>
+          <div id="ciudad"><strong>Ciudad:</strong></div>
+        </div>
+      </div>
+  
+  
+  <button id="print" onclick="imprimir()">  <i class="fa-sharp fa-solid fa-print"  id="icon"></i></button>
 
 </body>
 
 </html>
 
 <script>
+  function cargar() {
+    document.getElementById("nombre").innerHTML = "<strong>Nombre: </strong>" + document.getElementById("formNom").value;
+    document.getElementById("celular").innerHTML = "<strong>Celular: </strong>" + document.getElementById("formCel").value;
+    document.getElementById("direccion").innerHTML = "<strong>Dirección: </strong>" + document.getElementById("formDir").value;
+    document.getElementById("barrio").innerHTML = "<strong>Barrio: </strong>" + document.getElementById("formBar").value;
+    document.getElementById("ciudad").innerHTML = "<strong>Ciudad: </strong>" + document.getElementById("formCiu").value;
+  }
+
   function imprimir() {
-    document.getElementById("nombre").innerHTML ="<strong>Nombre: </strong>"+ document.getElementById("formNom").value;
-    document.getElementById("celular").innerHTML = "<strong>Celular: </strong>"+document.getElementById("formCel").value;
-    document.getElementById("direccion").innerHTML = "<strong>Dirección: </strong>"+document.getElementById("formDir").value;
-    document.getElementById("barrio").innerHTML ="<strong>Barrio: </strong>"+ document.getElementById("formBar").value;
-    document.getElementById("ciudad").innerHTML ="<strong>Ciudad: </strong>"+ document.getElementById("formCiu").value;
+    document.getElementById("formData").style.display = "none";
+    document.getElementById("print").style.display = "none";
+    document.getElementById("Underline").style.display = "none";
+    document.getElementById("tituloRotulo").style.display = "none";
+    window.print();
   }
 
 </script>

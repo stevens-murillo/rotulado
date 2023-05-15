@@ -2,5 +2,33 @@
     width: 100px !important;
     
  } */
+button {
+    background-color: #c22d64 !important;
+    border: 1px solid #fff !important;
+}
+
+#print, #reload{
+    position: absolute;
+    right: 10px;
+    top: 400px;
+    border-radius: 50px;
+    padding: 20px;
+    
+}
+
+#icon {
+    font-size:48px;
+    color: #ffff;
+}
 
 
+@media print {
+    #datEnvia {
+      max-width: 50%;
+      display: inline-block;
+    }
+    #datRecibe {
+      max-width: 50%;
+      display: inline-block;
+    }
+  }

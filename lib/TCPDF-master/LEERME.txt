@@ -1,0 +1,17 @@
+MODIFICACIONES A LA LIBRERIA
+
+1. Para poder guardar el PDF
+
+https://stackoverflow.com/questions/29232736/tcpdf-error-unable-to-create-output-file
+
+En el archivo 'include/tcpdf_static.php' sobre la línea 2435 en la función estática 'fopenLocal' 
+si elimino la declaración 'if' completa... funciona bien.
+
+public static function fopenLocal($filename, $mode) {
+    /*if (strpos($filename, '://') === false) {
+        $filename = 'file://'.$filename;
+    } elseif (strpos($filename, 'file://') !== 0) {
+        return false;
+    }*/
+    return fopen($filename, $mode);
+}

@@ -1,0 +1,22 @@
+{
+    "name": "the-muda-organization/notify-bootstrap",
+    "description": "Stylish and modern toast notifications based on Bootstrap 5 and Font Awesome",
+    "keywords": [
+        "bootstrap",
+        "css",
+        "javascript",
+        "javascript-library",
+        "notifications",
+        "notify",
+        "toast",
+        "toast-notifications"
+    ],
+    "readme": "/README.md",
+    "authors": [
+        {
+            "name": "Jakub Muda",
+            "email": "info@muda.pl"
+        }
+    ],
+    "license": "MIT"
+}

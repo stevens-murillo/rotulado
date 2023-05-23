@@ -25,13 +25,15 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 
   <!-- jquery -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.0/jquery.min.js"></script>
 
   <!-- font-awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script> -->
 
-  <script type='text/javascript' src='js/index.js'> </script>
+  <script type='module' src='js/index.js'> </script>
+
+  <!-- <script   src='js/firebase.js'> </script> -->
 
 
 </head>
@@ -43,6 +45,13 @@
 
       <div class="col-md-12 col-sm-12 col-xs-12 p-2 " id="formData" style="border: 0px solid green;">
         <h5>Datos de envio:</h5>
+        <div class="form-group">
+          <label for="exampleFormControlSelect1">Forma de envio</label>
+          <select class="form-control" id="formEnvio">
+            <option>CONTRA ENTREGA</option>
+            <option>PAGADO</option>
+          </select>
+        </div>
         <div class="form-group">
           <label for="exampleFormControlFile1">Nombre:</label>
           <input id="formNom" class="form-control form-control-sm" type="text" placeholder="Nombre">
@@ -63,52 +72,36 @@
           <label for="exampleFormControlFile1">Ciudad: </label>
           <input id="formCiu" class="form-control form-control-sm" type="text" placeholder="Ciudad">
         </div>
-      <hr>
-      <button type="submit" class="btn btn-primary" onclick="cargar()">Enviar</button>
-    </div>
-
-      <hr id="Underline">
-      <h5 id="tituloRotulo">Previsualización del rotulo</h5>
-        <div class="col-md-6 col-sm-6 col-xs-6 p-2 " id="datEnvia" style="border: 1px solid rgb(145, 129, 129); ">
-          <h5>Envía:</h5>
-          <strong>Cedula:</strong> 1005829833</br>
-          <strong>Nombre:</strong> Lissie Alejandra Valencia</br>
-          <strong>Dirección:</strong> Avenida 32 oeste #11 a 10</br>
-          <strong>Celular:</strong> 301 5687338</br>
-          <strong>Ciudad:</strong> Cali, valle</br>
-        </div>
-        <div class="col-md-6 col-sm-6 col-xs-6 p-2 " id="datRecibe" style="border: 1px solid rgb(145, 129, 129); ">
-          <h5>Recibe:</h5>
-          <div id="nombre"><strong>Nombre:</strong></div>
-          <div id="celular"><strong>Celular:</strong></div>
-          <div id="direccion"><strong>Dirección:</strong></div>
-          <div id="barrio"><strong>Barrio:</strong></div>
-          <div id="ciudad"><strong>Ciudad:</strong></div>
-        </div>
+        <hr>
+        <button type="submit" class="btn btn-primary" id="btnDetallesRotulo">Enviar</button>
+        <button type="submit" class="btn btn-primary" id="btnRefresh"><i class="fa-solid fa-arrows-rotate"></i></button>
       </div>
-  
-  
-  <button id="print" onclick="imprimir()">  <i class="fa-sharp fa-solid fa-print"  id="icon"></i></button>
+    </div>
+    <hr id="Underline">
+    <h5 id="tituloRotulo">Previsualización del rotulo</h5>
+    <div class="row" id="detllesEnvio" style="display:none; border: 1px solid rgb(145, 129, 129); ">
+      <strong><label id="detFormEnvio"></label></strong>
 
+      <div class="col-md-6 col-sm-6 col-xs-6 p-2 " id="datEnvia" style="border: 1px solid rgb(145, 129, 129); ">
+        <h5>Envía:</h5>
+        <strong>Cedula:</strong> 1005829833</br>
+        <strong>Nombre:</strong> Lissie Alejandra Valencia</br>
+        <strong>Dirección:</strong> Avenida 32 oeste #11 a 10</br>
+        <strong>Celular:</strong> 301 5687338</br>
+        <strong>Ciudad:</strong> Cali, valle</br>
+      </div>
+      <div class="col-md-6 col-sm-6 col-xs-6 p-2 " id="datRecibe" style="border: 1px solid rgb(145, 129, 129); ">
+        <h5>Recibe:</h5>
+        <strong>Nombre: </strong><label id="nombre"></label><br>
+        <strong>Celular: </strong><label id="celular"></label><br>
+        <strong>Dirección: </strong><label id="direccion"></label><br>
+        <strong>Barrio: </strong><label id="barrio"></label><br>
+        <strong>Ciudad: </strong><label id="ciudad"></label>
+      </div>
+
+    </div>
+    <button id="btnPrint"> <i class="fa-sharp fa-solid fa-print" id="icon"></i></button>
+    <div id='container'></div>
 </body>
 
 </html>
-
-<script>
-  function cargar() {
-    document.getElementById("nombre").innerHTML = "<strong>Nombre: </strong>" + document.getElementById("formNom").value;
-    document.getElementById("celular").innerHTML = "<strong>Celular: </strong>" + document.getElementById("formCel").value;
-    document.getElementById("direccion").innerHTML = "<strong>Dirección: </strong>" + document.getElementById("formDir").value;
-    document.getElementById("barrio").innerHTML = "<strong>Barrio: </strong>" + document.getElementById("formBar").value;
-    document.getElementById("ciudad").innerHTML = "<strong>Ciudad: </strong>" + document.getElementById("formCiu").value;
-  }
-
-  function imprimir() {
-    document.getElementById("formData").style.display = "none";
-    document.getElementById("print").style.display = "none";
-    document.getElementById("Underline").style.display = "none";
-    document.getElementById("tituloRotulo").style.display = "none";
-    window.print();
-  }
-
-</script>

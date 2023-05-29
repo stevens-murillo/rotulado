@@ -26,6 +26,19 @@ button {
   line-height: 19px;
 }
 
+input.error {
+  border: 1px solid #B91450 !important;
+  font-weight: 300;
+  color: red;
+}
+
+label.error {
+  color: #B91450;
+  font-size: 1rem;
+  display: block;
+  margin-top: 5px;
+}
+
 
 @media print {
     #datEnvia {
